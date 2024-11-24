@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>APWS</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">APWS</div>
+        <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="loginbox">
+    <div class ="title">
+    <h1 class="labeltext"> Select Plant</h1>
+    <form action = "result" method = "POST">
+    <input type="submit" class="Plant-Name" name = "submit_button" value="Periwinkle">
+    <input type="submit" class="Plant-Name" name = "submit_button" value="Rose">
+    <input type="submit" class="Plant-Name" name = "submit_button" value="Succulent">
+    {% if ackMsg %}
+    <h5>{{ackMsg}}</h5>
+    {% endif %}
+    </form>
+    </div>
+            </div>
+        <div class="label">
+                <h1 class="text-label">Soil Moisture Sensor</h1><br><br>
+            {% if moistureLevel %}
+            <h2 class="sensor-value">{{moistureLevel}}</h2>
+            {% endif %}
+            <h1 class="text-label">Water Level Sensor</h1><br><br>
+            {% if waterLevel %}
+            <h2 class="sensor-value">{{waterLevel}}</h2>
+            {% endif %}
+            <form action = "sensorVal" method = "POST">
+            <input type="submit" class="check" name = "request_button" value="Check value">
+        </div>
+    </section>
+    </body>
+</html>
